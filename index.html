@@ -76,17 +76,31 @@ button{cursor:pointer;border:none;font-family:inherit}
 
 /* ─── TOP BAR ────────────────────────────────────────── */
 #topbar{
-  background:#0A0C18;
-  border-bottom:1px solid var(--border);
-  padding:10px 20px;
-  text-align:center;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.06em;
-  color:var(--gold);
+  background:linear-gradient(90deg,#C73E00,#E85200,#C73E00);
+  padding:0;
   position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 16px rgba(200,62,0,.5);
 }
-#topbar span{color:var(--muted);font-weight:400;margin:0 10px}
+#topbar-inner{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:11px 16px;
+  font-size:13.5px;font-weight:900;
+  letter-spacing:.05em;color:#fff;
+  text-transform:uppercase;
+  flex-wrap:wrap;
+}
+#topbar-fire{font-size:16px;animation:fire .8s ease-in-out infinite alternate}
+@keyframes fire{0%{transform:scale(1) rotate(-5deg)}100%{transform:scale(1.2) rotate(5deg)}}
+#topbar-label{white-space:nowrap}
+#topbar-clock{
+  font-family:ui-monospace,monospace;
+  font-size:17px;font-weight:900;letter-spacing:.06em;
+  background:rgba(0,0,0,.3);
+  padding:3px 10px;border-radius:6px;
+  font-variant-numeric:tabular-nums;
+  color:#FFE066;
+  border:1px solid rgba(255,255,255,.15);
+}
 
 /* ─── HERO ───────────────────────────────────────────── */
 #hero{
@@ -173,7 +187,7 @@ button{cursor:pointer;border:none;font-family:inherit}
 }
 .slider-before,.slider-after{position:absolute;top:0;left:0;width:100%;height:100%}
 .slider-before{z-index:1}
-.slider-after{z-index:2;clip-path:inset(0 50% 0 0)}
+.slider-after{z-index:2;clip-path:inset(0 0 0 50%)}
 .slider-before img,.slider-after img{width:100%;height:100%;object-fit:cover}
 .slider-handle{
   position:absolute;top:0;bottom:0;z-index:3;
@@ -432,16 +446,19 @@ footer strong{color:var(--text)}
 
 <!-- ══ TOP BAR ════════════════════════════════════════ -->
 <div id="topbar">
-  🪄 MAGO DAS FOTOS
-  <span>·</span>
-  ACESSO IMEDIATO
-  <span>·</span>
-  GARANTIA 7 DIAS
+  <div id="topbar-inner">
+    <span id="topbar-fire">🔥</span>
+    <span id="topbar-label">OFERTA ESPECIAL ENCERRA EM:</span>
+    <span id="topbar-clock">15:00</span>
+  </div>
 </div>
 
 <!-- ══ HERO ═══════════════════════════════════════════ -->
 <section id="hero">
   <div class="container">
+    <div style="display:flex;justify-content:center;margin-bottom:20px">
+      <img src="./logo.png" alt="Mago das Fotos" style="height:72px;width:auto;object-fit:contain" onerror="this.style.display='none'">
+    </div>
     <div class="hero-eyebrow">ACESSO LIBERADO NA HORA</div>
     <h1 class="hero-h1">Seu perfil tá feio?<br><em>A gente resolve.</em></h1>
     <p class="hero-sub">
@@ -638,72 +655,6 @@ footer strong{color:var(--text)}
   </div>
 </section>
 
-<!-- ══ PRICING ════════════════════════════════════════ -->
-<section id="pricing">
-  <div class="container">
-    <div class="section-eyebrow">Oferta termina em breve</div>
-    <h2 class="section-title">Escolha seu pacote agora</h2>
-
-    <div class="timer-box">
-      <div class="timer-label">⚡ Oferta expira em</div>
-      <div class="timer-digits">
-        <span id="t-min">15</span>
-        <span class="timer-colon">:</span>
-        <span id="t-sec">00</span>
-      </div>
-      <div class="timer-units">
-        <span class="timer-unit">minutos</span>
-        <span class="timer-unit" style="width:12px"></span>
-        <span class="timer-unit">segundos</span>
-      </div>
-      <div class="timer-warning">Depois que o timer zerar o preço volta pra R$ 47,00</div>
-    </div>
-
-    <div class="plans">
-      <!-- PLANO BÁSICO -->
-      <div class="plan">
-        <div class="plan-name">Básico</div>
-        <div class="plan-original">de R$ 47,00</div>
-        <div class="plan-price"><sup>R$</sup>9<span style="font-size:22px">,90</span></div>
-        <div class="plan-discount">✓ Pagamento único · Sem mensalidade</div>
-        <ul class="plan-items">
-          <li><strong>+400 prompts organizados</strong></li>
-          <li>Carro, moto, praia, Dubai e muito mais</li>
-          <li>Funciona no ChatGPT e Gemini gratuitos</li>
-          <li>Acesso vitalício</li>
-        </ul>
-        <a href="URL_DO_CHECKOUT_BASICO" class="btn-secondary" onclick="gtag && gtag('event','click_basico')">
-          QUERO O BÁSICO
-        </a>
-      </div>
-
-      <!-- PLANO COMPLETO -->
-      <div class="plan featured">
-        <div class="plan-badge">⭐ 94% ESCOLHEM ESSE</div>
-        <div class="plan-name">Completo</div>
-        <div class="plan-original">de R$ 147,00</div>
-        <div class="plan-price"><sup>R$</sup>27<span style="font-size:22px">,90</span></div>
-        <div class="plan-discount">✓ Você economiza R$ 119,10 — 81% OFF</div>
-        <ul class="plan-items">
-          <li><strong>+400 prompts organizados por categoria</strong></li>
-          <li>Funciona no ChatGPT e Gemini gratuitos</li>
-          <li>Acesso vitalício · Sem mensalidade</li>
-          <li>Atualizações incluídas sem custo adicional</li>
-          <li><strong>+ 8 bônus exclusivos (R$286 de valor)</strong></li>
-          <li>+640 conteúdos no total</li>
-        </ul>
-        <a href="URL_DO_CHECKOUT_COMPLETO" class="btn-cta" onclick="gtag && gtag('event','click_completo')">
-          QUERO O COMPLETO — R$ 27,90
-        </a>
-        <div style="margin-top:10px;font-size:12px;text-align:center;color:var(--muted)">
-          Por apenas R$ 18 a mais você leva +8 bônus exclusivos e R$ 286 em conteúdo extra.
-          <strong style="color:var(--text)">A escolha óbvia é essa.</strong>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ BONUS STACK ════════════════════════════════════ -->
 <section id="bonuses">
   <div class="container">
@@ -782,13 +733,70 @@ footer strong{color:var(--text)}
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div style="margin-top:24px">
-      <a href="URL_DO_CHECKOUT_COMPLETO" class="btn-cta" onclick="gtag && gtag('event','click_bonus_cta')">
-        QUERO O PACOTE COMPLETO — R$ 27,90
-      </a>
-      <div style="text-align:center;margin-top:10px;font-size:13px;color:var(--muted)">
-        Pagamento único · Acesso imediato · Garantia de 7 dias
+<!-- ══ PRICING ════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-eyebrow">Oferta termina em breve</div>
+    <h2 class="section-title">Escolha seu pacote agora</h2>
+
+    <div class="timer-box">
+      <div class="timer-label">⚡ Oferta expira em</div>
+      <div class="timer-digits">
+        <span id="t-min">15</span>
+        <span class="timer-colon">:</span>
+        <span id="t-sec">00</span>
+      </div>
+      <div class="timer-units">
+        <span class="timer-unit">minutos</span>
+        <span class="timer-unit" style="width:12px"></span>
+        <span class="timer-unit">segundos</span>
+      </div>
+      <div class="timer-warning">Depois que o timer zerar o preço volta pra R$ 47,00</div>
+    </div>
+
+    <div class="plans">
+      <!-- PLANO BÁSICO -->
+      <div class="plan">
+        <div class="plan-name">Básico</div>
+        <div class="plan-original">de R$ 47,00</div>
+        <div class="plan-price"><sup>R$</sup>9<span style="font-size:22px">,90</span></div>
+        <div class="plan-discount">✓ Pagamento único · Sem mensalidade</div>
+        <ul class="plan-items">
+          <li><strong>+400 prompts organizados</strong></li>
+          <li>Carro, moto, praia, Dubai e muito mais</li>
+          <li>Funciona no ChatGPT e Gemini gratuitos</li>
+          <li>Acesso vitalício</li>
+        </ul>
+        <a href="URL_DO_CHECKOUT_BASICO" class="btn-secondary" onclick="gtag && gtag('event','click_basico')">
+          QUERO O BÁSICO
+        </a>
+      </div>
+
+      <!-- PLANO COMPLETO -->
+      <div class="plan featured">
+        <div class="plan-badge">⭐ 94% ESCOLHEM ESSE</div>
+        <div class="plan-name">Completo</div>
+        <div class="plan-original">de R$ 147,00</div>
+        <div class="plan-price"><sup>R$</sup>27<span style="font-size:22px">,90</span></div>
+        <div class="plan-discount">✓ Você economiza R$ 119,10 — 81% OFF</div>
+        <ul class="plan-items">
+          <li><strong>+400 prompts organizados por categoria</strong></li>
+          <li>Funciona no ChatGPT e Gemini gratuitos</li>
+          <li>Acesso vitalício · Sem mensalidade</li>
+          <li>Atualizações incluídas sem custo adicional</li>
+          <li><strong>+ 8 bônus exclusivos (R$286 de valor)</strong></li>
+          <li>+640 conteúdos no total</li>
+        </ul>
+        <a href="URL_DO_CHECKOUT_COMPLETO" class="btn-cta" onclick="gtag && gtag('event','click_completo')">
+          QUERO O COMPLETO — R$ 27,90
+        </a>
+        <div style="margin-top:10px;font-size:12px;text-align:center;color:var(--muted)">
+          Por apenas R$ 18 a mais você leva +8 bônus exclusivos e R$ 286 em conteúdo extra.
+          <strong style="color:var(--text)">A escolha óbvia é essa.</strong>
+        </div>
       </div>
     </div>
   </div>
@@ -938,7 +946,7 @@ footer strong{color:var(--text)}
   function setPos(p){
     pos = Math.min(Math.max(p, 5), 95);
     handle.style.left = pos + '%';
-    afterEl.style.clipPath = 'inset(0 ' + (100 - pos) + '% 0 0)';
+    afterEl.style.clipPath = 'inset(0 0 0 ' + pos + '%)';
   }
   setPos(50);
 
@@ -977,6 +985,8 @@ footer strong{color:var(--text)}
 
     ['t-min','t-min2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = str_m; });
     ['t-sec','t-sec2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = str_s; });
+    const clock = document.getElementById('topbar-clock');
+    if(clock) clock.textContent = str_m + ':' + str_s;
 
     if(left <= 0){
       end = Date.now() + 15 * 60 * 1000; // reseta
