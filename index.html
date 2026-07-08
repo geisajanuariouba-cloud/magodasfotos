@@ -76,10 +76,10 @@ button{cursor:pointer;border:none;font-family:inherit}
 
 /* ─── TOP BAR ────────────────────────────────────────── */
 #topbar{
-  background:linear-gradient(90deg,#C73E00,#E85200,#C73E00);
+  background:linear-gradient(90deg,#3A0080,#5B00CC,#3A0080);
   padding:0;
   position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 16px rgba(200,62,0,.5);
+  box-shadow:0 2px 16px rgba(91,0,204,.4);
 }
 #topbar-inner{
   display:flex;align-items:center;justify-content:center;gap:10px;
@@ -399,20 +399,7 @@ button{cursor:pointer;border:none;font-family:inherit}
 }
 
 /* ─── STICKY MOBILE BAR ──────────────────────────────── */
-#sticky-bar{
-  position:fixed;bottom:0;left:0;right:0;z-index:200;
-  background:#07080F;border-top:1px solid var(--border);
-  padding:12px 16px 16px;
-  display:flex;flex-direction:column;gap:6px;
-  box-shadow:0 -8px 32px rgba(0,0,0,.6);
-}
-#sticky-bar .btn-cta{font-size:16px;min-height:56px;padding:16px 20px}
-.sticky-sub{
-  text-align:center;font-size:11.5px;color:var(--muted);
-  display:flex;justify-content:center;gap:14px;
-}
-.sticky-sub span{display:flex;align-items:center;gap:4px}
-.sticky-sub span::before{content:'✓';color:var(--green);font-size:12px}
+#sticky-bar{display:none!important}
 
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer{
