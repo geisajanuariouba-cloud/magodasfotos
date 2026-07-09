@@ -1030,12 +1030,22 @@ function playVSL(){
   const video = document.getElementById('vsl-video');
   const overlay = document.getElementById('vsl-overlay');
   if(!video) return;
+  video.currentTime = 0;
   video.play();
   if(overlay) overlay.style.display = 'none';
 }
 document.getElementById('vsl-video')?.addEventListener('ended', function(){
+  this.currentTime = 0;
   const overlay = document.getElementById('vsl-overlay');
   if(overlay) overlay.style.display = 'flex';
+});
+document.getElementById('vsl-video')?.addEventListener('click', function(){
+  if(this.paused){
+    this.play();
+    document.getElementById('vsl-overlay').style.display = 'none';
+  } else {
+    this.pause();
+  }
 });
 
 // ── SMOOTH SCROLL para links internos ────────────────
