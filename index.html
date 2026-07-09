@@ -582,11 +582,29 @@ footer strong{color:var(--text)}
     <div class="section-eyebrow">ASSISTA ANTES DE CONTINUAR</div>
     <h2 class="section-title">Veja como transformar suas fotos em segundos</h2>
     <div class="vsl-box">
-      <!-- SUBSTITUIR PELO IFRAME DA VSL QUANDO ESTIVER PRONTA -->
-      <!-- Exemplo: <iframe class="vsl-iframe" src="https://player.vimeo.com/video/SEU_ID" allowfullscreen></iframe> -->
-      <div class="vsl-placeholder" id="vsl-placeholder">
-        <div class="vsl-play">▶</div>
-        <div class="vsl-label">Clique para assistir</div>
+      <video
+        id="vsl-video"
+        src="./vsl/Video Project 14 (1).mp4"
+        poster=""
+        playsinline
+        preload="metadata"
+        style="width:100%;display:block;border-radius:var(--radius) var(--radius) 0 0;background:#000;aspect-ratio:16/9;cursor:pointer"
+        onclick="this.paused ? this.play() : this.pause()"
+      ></video>
+      <div style="padding:0;position:relative">
+        <div id="vsl-overlay" onclick="playVSL()" style="
+          position:absolute;top:0;left:0;right:0;bottom:0;
+          display:flex;flex-direction:column;align-items:center;justify-content:center;
+          gap:10px;cursor:pointer;background:rgba(0,0,0,.35);
+          border-radius:0;transition:opacity .2s;
+        ">
+          <div style="
+            width:68px;height:68px;background:var(--gold);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+            font-size:26px;color:#000;box-shadow:0 4px 24px rgba(255,184,0,.5);
+          ">▶</div>
+          <div style="font-size:13px;color:#fff;font-weight:600;letter-spacing:.03em">Clique para assistir</div>
+        </div>
       </div>
       <div class="vsl-caption">⚡ É só copiar o prompt, colar e pronto. Resultado em 3 segundos.</div>
     </div>
@@ -1005,6 +1023,19 @@ function toggleFaq(btn){
   }, {threshold: 0.1});
   obs.observe(ctaFinal);
 })();
+
+// ── VSL PLAYER ───────────────────────────────────────
+function playVSL(){
+  const video = document.getElementById('vsl-video');
+  const overlay = document.getElementById('vsl-overlay');
+  if(!video) return;
+  video.play();
+  if(overlay) overlay.style.display = 'none';
+}
+document.getElementById('vsl-video')?.addEventListener('ended', function(){
+  const overlay = document.getElementById('vsl-overlay');
+  if(overlay) overlay.style.display = 'flex';
+});
 
 // ── SMOOTH SCROLL para links internos ────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
