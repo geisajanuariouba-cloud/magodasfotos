@@ -422,24 +422,7 @@ button{cursor:pointer;border:none;font-family:inherit}
 }
 
 /* ─── STICKY MOBILE BAR ──────────────────────────────── */
-#sticky-bar{
-  display:none;
-  position:fixed;bottom:0;left:0;right:0;z-index:200;
-  background:#0C0E1A;border-top:1px solid var(--border);
-  padding:10px 16px 14px;
-  flex-direction:column;gap:6px;
-  box-shadow:0 -4px 24px rgba(0,0,0,.6);
-}
-#sticky-bar.visible{display:flex}
-.sticky-sub{
-  display:flex;justify-content:center;gap:14px;
-  font-size:11px;color:var(--muted);font-weight:600;
-}
-@media(min-width:640px){
-  #sticky-bar{flex-direction:row;align-items:center;padding:12px 24px}
-  #sticky-bar .btn-cta{flex:1;max-width:360px}
-  .sticky-sub{flex-direction:column;gap:4px}
-}
+#sticky-bar{display:none!important}
 
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer{
