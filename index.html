@@ -2,7 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://i.ibb.co" crossorigin>
+<link rel="dns-prefetch" href="https://i.ibb.co">
 <meta name="description" content="Seu perfil tá feio? A gente resolve. 400 prompts prontos pra deixar sua foto muito mais daora em segundos. É só copiar e colar.">
 <link rel="icon" href="./logo.png" type="image/png">
 <link rel="shortcut icon" href="./logo.png" type="image/png">
@@ -403,7 +405,24 @@ button{cursor:pointer;border:none;font-family:inherit}
 }
 
 /* ─── STICKY MOBILE BAR ──────────────────────────────── */
-#sticky-bar{display:none!important}
+#sticky-bar{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:#0C0E1A;border-top:1px solid var(--border);
+  padding:10px 16px 14px;
+  flex-direction:column;gap:6px;
+  box-shadow:0 -4px 24px rgba(0,0,0,.6);
+}
+#sticky-bar.visible{display:flex}
+.sticky-sub{
+  display:flex;justify-content:center;gap:14px;
+  font-size:11px;color:var(--muted);font-weight:600;
+}
+@media(min-width:640px){
+  #sticky-bar{flex-direction:row;align-items:center;padding:12px 24px}
+  #sticky-bar .btn-cta{flex:1;max-width:360px}
+  .sticky-sub{flex-direction:column;gap:4px}
+}
 
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer{
@@ -416,12 +435,7 @@ footer strong{color:var(--text)}
 @media(min-width:640px){
   .plans{flex-direction:row;max-width:640px}
   .plan{flex:1}
-  #sticky-bar{flex-direction:row;align-items:center;padding:12px 24px}
-  #sticky-bar .btn-cta{flex:1;max-width:360px}
-  .sticky-sub{flex-direction:column;gap:4px}
-  .testis-grid{
-    display:grid;grid-template-columns:1fr 1fr;
-  }
+  .testis-grid{display:grid;grid-template-columns:1fr 1fr}
 }
 @media(min-width:900px){
   #sticky-bar{max-width:860px;left:50%;right:auto;transform:translateX(-50%);border-radius:var(--radius) var(--radius) 0 0}
@@ -448,7 +462,7 @@ footer strong{color:var(--text)}
 <section id="hero">
   <div class="container">
     <div style="display:flex;justify-content:center;margin-bottom:20px">
-      <img src="./logo.png" alt="Mago das Fotos" style="height:72px;width:auto;object-fit:contain" onerror="this.style.display='none'">
+      <img src="./logo.png" alt="Mago das Fotos" style="height:72px;width:auto;object-fit:contain" fetchpriority="high" onerror="this.style.display='none'">
     </div>
     <div class="hero-eyebrow">ACESSO LIBERADO NA HORA</div>
     <h1 class="hero-h1">Seu perfil tá feio?<br><em>A gente resolve.</em></h1>
@@ -457,7 +471,7 @@ footer strong{color:var(--text)}
       <strong>É só copiar e colar.</strong>
     </p>
     <div class="hero-cta-wrap">
-      <a href="URL_DO_CHECKOUT" class="btn-cta" id="hero-cta" onclick="gtag && gtag('event','click_hero_cta')">
+      <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta" id="hero-cta" onclick="gtag && gtag('event','click_hero_cta')">
         QUERO OS 400 PROMPTS AGORA
       </a>
     </div>
@@ -583,28 +597,27 @@ footer strong{color:var(--text)}
     <div class="section-eyebrow">ASSISTA ANTES DE CONTINUAR</div>
     <h2 class="section-title">Veja como transformar suas fotos em segundos</h2>
     <div class="vsl-box">
-      <video
-        id="vsl-video"
-        src="./vsl/vsl final.mp4"
-        poster=""
-        playsinline
-        preload="metadata"
-        style="width:100%;display:block;border-radius:var(--radius) var(--radius) 0 0;background:#000;aspect-ratio:9/16;cursor:pointer;max-height:80vh"
-        onclick="this.paused ? this.play() : this.pause()"
-      ></video>
-      <div style="padding:0;position:relative">
+      <div style="position:relative;border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;background:#000">
+        <video
+          id="vsl-video"
+          src="./vsl/vsl final.mp4"
+          playsinline
+          preload="metadata"
+          style="width:100%;display:block;aspect-ratio:9/16;max-height:80vh;object-fit:contain"
+        ></video>
         <div id="vsl-overlay" onclick="playVSL()" style="
           position:absolute;top:0;left:0;right:0;bottom:0;
           display:flex;flex-direction:column;align-items:center;justify-content:center;
-          gap:10px;cursor:pointer;background:rgba(0,0,0,.35);
-          border-radius:0;transition:opacity .2s;
+          gap:10px;cursor:pointer;background:rgba(0,0,0,.45);
+          transition:opacity .2s;
         ">
           <div style="
-            width:68px;height:68px;background:var(--gold);border-radius:50%;
+            width:72px;height:72px;background:var(--gold);border-radius:50%;
             display:flex;align-items:center;justify-content:center;
-            font-size:26px;color:#000;box-shadow:0 4px 24px rgba(255,184,0,.5);
+            font-size:28px;color:#000;box-shadow:0 4px 28px rgba(255,184,0,.6);
+            pointer-events:none;
           ">▶</div>
-          <div style="font-size:13px;color:#fff;font-weight:600;letter-spacing:.03em">Clique para assistir</div>
+          <div style="font-size:14px;color:#fff;font-weight:700;letter-spacing:.03em;pointer-events:none">Clique para assistir</div>
         </div>
       </div>
       <div class="vsl-caption">⚡ É só copiar o prompt, colar e pronto. Resultado em 3 segundos.</div>
@@ -667,13 +680,13 @@ footer strong{color:var(--text)}
 <!-- ══ BONUS STACK ════════════════════════════════════ -->
 <section id="bonuses">
   <div class="container">
-    <div class="section-eyebrow">Só no plano completo</div>
-    <h2 class="section-title">8 bônus exclusivos inclusos</h2>
+    <div class="section-eyebrow">Incluso na sua compra</div>
+    <h2 class="section-title">7 bônus exclusivos inclusos</h2>
     <p class="section-sub">Grátis. Hoje. Só enquanto essa oferta existir.</p>
 
     <div class="bonus-total">
-      <div class="bonus-total-val">TOTAL EM BÔNUS: R$ 286,00</div>
-      <div class="bonus-total-label">hoje incluso — você paga R$ 27,90 no total</div>
+      <div class="bonus-total-val">TOTAL EM BÔNUS: R$ 239,00</div>
+      <div class="bonus-total-label">hoje incluso — você paga apenas R$ 9,90 no total</div>
     </div>
 
     <div class="bonus-list">
@@ -733,14 +746,6 @@ footer strong{color:var(--text)}
           <div class="bonus-price"><s>R$27,00</s> → <strong>GRÁTIS</strong></div>
         </div>
       </div>
-      <div class="bonus-item">
-        <div class="bonus-num">BÔNUS 8</div>
-        <div class="bonus-content">
-          <div class="bonus-name">Grupo VIP no WhatsApp</div>
-          <div class="bonus-desc">Novos prompts toda semana + suporte direto. Você nunca fica sem conteúdo novo.</div>
-          <div class="bonus-price"><s>R$47,00</s> → <strong>GRÁTIS</strong></div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -767,45 +772,23 @@ footer strong{color:var(--text)}
     </div>
 
     <div class="plans">
-      <!-- PLANO BÁSICO -->
-      <div class="plan">
-        <div class="plan-name">Básico</div>
+      <!-- PLANO ÚNICO -->
+      <div class="plan featured" style="max-width:420px;margin:0 auto">
+        <div class="plan-badge">⭐ TUDO INCLUSO</div>
+        <div class="plan-name">Mago das Fotos — Completo</div>
         <div class="plan-original">de R$ 47,00</div>
         <div class="plan-price"><sup>R$</sup>9<span style="font-size:22px">,90</span></div>
-        <div class="plan-discount">✓ Pagamento único · Sem mensalidade</div>
-        <ul class="plan-items">
-          <li><strong>+400 prompts organizados</strong></li>
-          <li>Carro, moto, praia, Dubai e muito mais</li>
-          <li>Funciona no ChatGPT e Gemini gratuitos</li>
-          <li>Acesso vitalício</li>
-        </ul>
-        <a href="URL_DO_CHECKOUT_BASICO" class="btn-secondary" onclick="gtag && gtag('event','click_basico')">
-          QUERO O BÁSICO
-        </a>
-      </div>
-
-      <!-- PLANO COMPLETO -->
-      <div class="plan featured">
-        <div class="plan-badge">⭐ 94% ESCOLHEM ESSE</div>
-        <div class="plan-name">Completo</div>
-        <div class="plan-original">de R$ 147,00</div>
-        <div class="plan-price"><sup>R$</sup>27<span style="font-size:22px">,90</span></div>
-        <div class="plan-discount">✓ Você economiza R$ 119,10 — 81% OFF</div>
+        <div class="plan-discount">✓ Pagamento único · Sem mensalidade · 81% OFF</div>
         <ul class="plan-items">
           <li><strong>+400 prompts organizados por categoria</strong></li>
+          <li>Carro, moto, praia, Dubai e muito mais</li>
           <li>Funciona no ChatGPT e Gemini gratuitos</li>
-          <li>Acesso vitalício · Sem mensalidade</li>
-          <li>Atualizações incluídas sem custo adicional</li>
-          <li><strong>+ 8 bônus exclusivos (R$286 de valor)</strong></li>
-          <li>+640 conteúdos no total</li>
+          <li>Acesso vitalício · Atualizações incluídas</li>
+          <li><strong>+ 7 bônus exclusivos (R$239 de valor)</strong></li>
         </ul>
-        <a href="URL_DO_CHECKOUT_COMPLETO" class="btn-cta" onclick="gtag && gtag('event','click_completo')">
-          QUERO O COMPLETO — R$ 27,90
+        <a href="https://pay.wiapy.com/OeJsJBnyg3Qc_BASICO" class="btn-cta" onclick="gtag && gtag('event','click_comprar')">
+          QUERO OS PROMPTS AGORA — R$ 9,90
         </a>
-        <div style="margin-top:10px;font-size:12px;text-align:center;color:var(--muted)">
-          Por apenas R$ 18 a mais você leva +8 bônus exclusivos e R$ 286 em conteúdo extra.
-          <strong style="color:var(--text)">A escolha óbvia é essa.</strong>
-        </div>
       </div>
     </div>
   </div>
@@ -900,29 +883,25 @@ footer strong{color:var(--text)}
       <span class="text-gold">ter um perfil sem foto boa.</span>
     </h2>
     <p class="cta-final-sub">
-      +400 prompts organizados. ChatGPT gratuito. Acesso na hora.<br>
-      Por R$ 27,90 — uma vez só.
+      +400 prompts organizados + 7 bônus exclusivos. ChatGPT gratuito. Acesso na hora.<br>
+      Por R$ 9,90 — uma vez só.
     </p>
     <div class="cta-counter" id="cta-counter">
       ⚡ Oferta expira em <span id="t-min2">15</span>:<span id="t-sec2">00</span> — depois volta pra R$ 47,00
     </div>
-    <a href="URL_DO_CHECKOUT_COMPLETO" class="btn-cta" style="max-width:480px;margin:0 auto 14px" onclick="gtag && gtag('event','click_final_cta')">
-      QUERO O PACOTE COMPLETO — R$ 27,90
+    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc_BASICO" class="btn-cta" style="max-width:480px;margin:0 auto 14px" onclick="gtag && gtag('event','click_final_cta')">
+      QUERO OS PROMPTS AGORA — R$ 9,90
     </a>
     <div style="text-align:center;font-size:13px;color:var(--muted)">
       🔒 Pagamento seguro · Acesso imediato · Garantia 7 dias
-    </div>
-    <div style="margin-top:20px;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;font-size:13.5px;text-align:center;color:var(--muted);max-width:440px;margin-left:auto;margin-right:auto">
-      "Por apenas R$ 18 a mais você leva +400 prompts, 8 bônus exclusivos e R$ 286 em conteúdo extra.<br>
-      <strong class="text-gold">A escolha óbvia é essa."</strong>
     </div>
   </div>
 </section>
 
 <!-- ══ STICKY BAR (MOBILE) ════════════════════════════ -->
 <div id="sticky-bar">
-  <a href="URL_DO_CHECKOUT_COMPLETO" class="btn-cta" onclick="gtag && gtag('event','click_sticky_cta')">
-    QUERO OS PROMPTS — R$ 27,90
+  <a href="https://pay.wiapy.com/OeJsJBnyg3Qc_BASICO" class="btn-cta" onclick="gtag && gtag('event','click_sticky_cta')">
+    QUERO OS PROMPTS — R$ 9,90
   </a>
   <div class="sticky-sub">
     <span>Acesso imediato</span>
@@ -1014,39 +993,49 @@ function toggleFaq(btn){
   if(!wasOpen) item.classList.add('open');
 }
 
-// ── STICKY BAR: hide ao chegar no CTA final ──────────
+// ── STICKY BAR ───────────────────────────────────────
 (function(){
   const bar = document.getElementById('sticky-bar');
+  const hero = document.getElementById('hero');
   const ctaFinal = document.getElementById('cta-final');
-  if(!bar || !ctaFinal) return;
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { bar.style.display = e.isIntersecting ? 'none' : ''; });
-  }, {threshold: 0.1});
-  obs.observe(ctaFinal);
+  if(!bar) return;
+
+  function update(){
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    const ctaTop = ctaFinal ? ctaFinal.getBoundingClientRect().top : Infinity;
+    const show = heroBottom < 0 && ctaTop > window.innerHeight * 0.5;
+    bar.classList.toggle('visible', show);
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  update();
 })();
 
 // ── VSL PLAYER ───────────────────────────────────────
-function playVSL(){
+(function(){
   const video = document.getElementById('vsl-video');
   const overlay = document.getElementById('vsl-overlay');
   if(!video) return;
-  video.currentTime = 0;
-  video.play();
-  if(overlay) overlay.style.display = 'none';
-}
-document.getElementById('vsl-video')?.addEventListener('ended', function(){
-  this.currentTime = 0;
-  const overlay = document.getElementById('vsl-overlay');
-  if(overlay) overlay.style.display = 'flex';
-});
-document.getElementById('vsl-video')?.addEventListener('click', function(){
-  if(this.paused){
-    this.play();
-    document.getElementById('vsl-overlay').style.display = 'none';
-  } else {
-    this.pause();
-  }
-});
+
+  function showOverlay(){ if(overlay) overlay.style.display = 'flex'; }
+  function hideOverlay(){ if(overlay) overlay.style.display = 'none'; }
+
+  window.playVSL = function(){
+    video.play();
+    hideOverlay();
+  };
+
+  // tap no vídeo: play/pause
+  video.addEventListener('click', function(){
+    if(this.paused){ this.play(); hideOverlay(); }
+    else { this.pause(); }
+  });
+
+  video.addEventListener('ended', function(){
+    this.currentTime = 0;
+    showOverlay();
+  });
+})();
 
 // ── SMOOTH SCROLL para links internos ────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
