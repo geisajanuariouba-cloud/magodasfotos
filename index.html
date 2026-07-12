@@ -6,9 +6,7 @@
 <link rel="preconnect" href="https://i.ibb.co" crossorigin>
 <link rel="dns-prefetch" href="https://i.ibb.co">
 <meta name="description" content="Seu perfil tá feio? A gente resolve. 400 prompts prontos pra deixar sua foto muito mais daora em segundos. É só copiar e colar.">
-<link rel="icon" href="./logo.png" type="image/png">
-<link rel="shortcut icon" href="./logo.png" type="image/png">
-<link rel="apple-touch-icon" href="./logo.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%84%3C/text%3E%3C/svg%3E">
 <title>Mago das Fotos · Seu perfil tá feio? A gente resolve.</title>
 <!-- Utmify Pixel -->
 <script>
@@ -451,8 +449,11 @@ button{cursor:pointer;border:none;font-family:inherit}
 }
 @keyframes popIn{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
 #upsell-close{
-  position:absolute;top:12px;right:14px;background:none;border:none;
+  position:absolute;top:4px;right:4px;background:none;border:none;
   color:var(--muted);font-size:22px;cursor:pointer;line-height:1;
+  padding:14px;min-width:44px;min-height:44px;
+  display:flex;align-items:center;justify-content:center;
+  touch-action:manipulation;
 }
 .upsell-eyebrow{
   font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
@@ -473,13 +474,14 @@ button{cursor:pointer;border:none;font-family:inherit}
 .upsell-items li::before{content:'✓';color:var(--green);font-size:12px;flex-shrink:0;margin-top:2px}
 .upsell-items li strong{color:var(--text)}
 .upsell-basico-link{
-  display:block;margin-top:10px;font-size:13px;font-weight:700;
+  display:block;margin-top:6px;font-size:13px;font-weight:700;
   color:var(--muted);text-decoration:underline;cursor:pointer;
+  padding:10px 4px;touch-action:manipulation;
 }
 .upsell-no{
-  margin-top:12px;font-size:12px;color:var(--muted);
+  margin-top:4px;font-size:12px;color:var(--muted);
   cursor:pointer;text-decoration:underline;display:none;
-  opacity:.7;
+  opacity:.7;padding:10px 4px;touch-action:manipulation;
 }
 
 /* ─── FOOTER ──────────────────────────────────────────── */
@@ -519,8 +521,9 @@ footer strong{color:var(--text)}
 <!-- ══ HERO ═══════════════════════════════════════════ -->
 <section id="hero">
   <div class="container">
-    <div style="display:flex;justify-content:center;margin-bottom:20px">
-      <img src="./logo.png" alt="Mago das Fotos" style="height:72px;width:auto;object-fit:contain" fetchpriority="high" onerror="this.style.display='none'">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px">
+      <span style="font-size:38px;line-height:1">🪄</span>
+      <span style="font-size:22px;font-weight:900;letter-spacing:-.02em">Mago das Fotos</span>
     </div>
     <div class="hero-eyebrow">ACESSO LIBERADO NA HORA</div>
     <h1 class="hero-h1">Seu perfil tá feio?<br><em>A gente resolve.</em></h1>
@@ -529,7 +532,7 @@ footer strong{color:var(--text)}
       <strong>É só copiar e colar.</strong>
     </p>
     <div class="hero-cta-wrap">
-      <a href="#pricing" class="btn-cta" id="hero-cta" onclick="gtag && gtag('event','click_hero_cta')">
+      <a href="#pricing" class="btn-cta" id="hero-cta" onclick="typeof gtag==='function' && gtag('event','click_hero_cta')">
         QUERO OS 400 PROMPTS AGORA
       </a>
     </div>
@@ -744,7 +747,7 @@ footer strong{color:var(--text)}
 
     <div class="bonus-total">
       <div class="bonus-total-val">TOTAL EM BÔNUS: R$ 239,00</div>
-      <div class="bonus-total-label">hoje incluso você paga apenas R$ 9,90 no total</div>
+      <div class="bonus-total-label">hoje incluso a partir de R$ 9,90 no total</div>
     </div>
 
     <div class="bonus-list">
@@ -784,7 +787,7 @@ footer strong{color:var(--text)}
         <div class="bonus-num">BÔNUS 5</div>
         <div class="bonus-content">
           <div class="bonus-name">Pack Identidade Visual</div>
-          <div class="bonus-desc">+30 prompts para montar um feed com estética coerente. Parece perfil de influencer, custa R$ 27,90.</div>
+          <div class="bonus-desc">+30 prompts para montar um feed com estética coerente. Parece perfil de influencer.</div>
           <div class="bonus-price"><s>R$47,00</s> → <strong>GRÁTIS</strong></div>
         </div>
       </div>
@@ -849,7 +852,7 @@ footer strong{color:var(--text)}
           <li class="neg">Pack de legendas prontas</li>
           <li class="neg">Atualizações futuras</li>
         </ul>
-        <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" style="background:var(--muted);box-shadow:none" onclick="gtag&&gtag('event','click_basico')">
+        <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" style="background:var(--muted);box-shadow:none" onclick="typeof gtag==='function'&&gtag('event','click_basico')">
           QUERO O BÁSICO · R$ 9,90
         </a>
       </div>
@@ -873,7 +876,7 @@ footer strong{color:var(--text)}
           <li><strong>Pack de legendas prontas para postar</strong></li>
           <li><strong>Atualizações futuras inclusas</strong></li>
         </ul>
-        <a href="https://pay.wiapy.com/-qpWMMYVyL3O" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_completo')">
+        <a href="https://pay.wiapy.com/-qpWMMYVyL3O" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');typeof gtag==='function'&&gtag('event','click_completo')">
           QUERO O COMPLETO · R$ 27,90
         </a>
       </div>
@@ -945,7 +948,7 @@ footer strong{color:var(--text)}
           <span class="faq-arrow">▼</span>
         </button>
         <div class="faq-a">
-          <strong>Não.</strong> Pagamento único, acesso vitalício. Você paga uma vez e tem os prompts pra sempre, incluindo todas as atualizações futuras sem custo adicional.
+          <strong>Não.</strong> Pagamento único, acesso vitalício. Você paga uma vez e tem os prompts pra sempre. As atualizações futuras são exclusivas de quem leva o plano Completo.
         </div>
       </div>
       <div class="faq-item">
@@ -976,7 +979,7 @@ footer strong{color:var(--text)}
     <div class="cta-counter" id="cta-counter">
       ⚡ Oferta expira em <span id="t-min2">15</span>:<span id="t-sec2">00</span> depois volta pra R$ 47,00.
     </div>
-    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" style="max-width:480px;margin:0 auto 14px" onclick="gtag&&gtag('event','click_final_cta')">
+    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" style="max-width:480px;margin:0 auto 14px" onclick="typeof gtag==='function'&&gtag('event','click_final_cta')">
       QUERO OS PROMPTS AGORA · R$ 9,90
     </a>
     <div style="text-align:center;font-size:13px;color:var(--muted)">
@@ -987,7 +990,7 @@ footer strong{color:var(--text)}
 
 <!-- ══ STICKY BAR (MOBILE) ════════════════════════════ -->
 <div id="sticky-bar">
-  <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" onclick="gtag&&gtag('event','click_sticky_cta')">
+  <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" onclick="typeof gtag==='function'&&gtag('event','click_sticky_cta')">
     QUERO OS PROMPTS R$ 9,90
   </a>
   <div class="sticky-sub">
@@ -1018,10 +1021,10 @@ footer strong{color:var(--text)}
       <li><strong>Pack de legendas prontas para postar</strong></li>
       <li><strong>Atualizações futuras inclusas</strong></li>
     </ul>
-    <a href="https://pay.wiapy.com/uVTw8NzBoS4" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_upsell')">
+    <a href="https://pay.wiapy.com/uVTw8NzBoS4" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');typeof gtag==='function'&&gtag('event','click_upsell')">
       SIM, QUERO O COMPLETO POR R$ 17,90
     </a>
-    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="upsell-basico-link" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_upsell_basico')">
+    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="upsell-basico-link" onclick="fbq&&fbq('track','InitiateCheckout');typeof gtag==='function'&&gtag('event','click_upsell_basico')">
       Não, quero só o básico por R$ 9,90
     </a>
     <span class="upsell-no" id="upsell-no-thanks" onclick="closeUpsell()">Não, prefiro ficar com o perfil feio</span>
