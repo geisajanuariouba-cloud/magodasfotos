@@ -478,7 +478,7 @@ button{cursor:pointer;border:none;font-family:inherit}
 }
 .upsell-no{
   margin-top:12px;font-size:12px;color:var(--muted);
-  cursor:pointer;text-decoration:underline;display:block;
+  cursor:pointer;text-decoration:underline;display:none;
   opacity:.7;
 }
 
@@ -1024,7 +1024,7 @@ footer strong{color:var(--text)}
     <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="upsell-basico-link" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_upsell_basico')">
       Não, quero só o básico por R$ 9,90
     </a>
-    <span class="upsell-no" onclick="closeUpsell()">Não, prefiro ficar com o perfil feio</span>
+    <span class="upsell-no" id="upsell-no-thanks" onclick="closeUpsell()">Não, prefiro ficar com o perfil feio</span>
   </div>
 </div>
 
@@ -1133,8 +1133,10 @@ function toggleFaq(btn){
 (function(){
   let shownByExitIntent = false;
 
-  function showUpsell(){
+  function showUpsell(viaExitIntent){
     document.getElementById('upsell-overlay').classList.add('active');
+    const noThanks = document.getElementById('upsell-no-thanks');
+    if(noThanks) noThanks.style.display = viaExitIntent ? 'block' : 'none';
     fbq && fbq('track','ViewContent',{content_name:'upsell_popup'});
   }
 
@@ -1146,7 +1148,7 @@ function toggleFaq(btn){
   document.addEventListener('mouseleave', function(e){
     if(e.clientY < 10 && !shownByExitIntent){
       shownByExitIntent = true;
-      showUpsell();
+      showUpsell(true);
     }
   });
 
@@ -1154,7 +1156,7 @@ function toggleFaq(btn){
   document.querySelectorAll('.btn-basico').forEach(function(btn){
     btn.addEventListener('click', function(e){
       e.preventDefault();
-      showUpsell();
+      showUpsell(false);
     });
   });
 
