@@ -31,6 +31,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+fbq('set', 'autoConfig', false, '1975487463203640');
 fbq('init', '1975487463203640');
 fbq('track', 'PageView');
 </script>
@@ -355,6 +356,8 @@ button{cursor:pointer;border:none;font-family:inherit}
 .plan-items li:last-child{border-bottom:none}
 .plan-items li::before{content:'✓';color:var(--green);font-size:13px;flex-shrink:0;margin-top:1px}
 .plan-items li strong{color:var(--text)}
+.plan-items li.neg{opacity:.55}
+.plan-items li.neg::before{content:'✗';color:var(--red)}
 
 /* ─── BONUS STACK ────────────────────────────────────── */
 #bonuses{padding:44px 0;background:var(--bg2)}
@@ -469,9 +472,14 @@ button{cursor:pointer;border:none;font-family:inherit}
 .upsell-items li:last-child{border-bottom:none}
 .upsell-items li::before{content:'✓';color:var(--green);font-size:12px;flex-shrink:0;margin-top:2px}
 .upsell-items li strong{color:var(--text)}
+.upsell-basico-link{
+  display:block;margin-top:10px;font-size:13px;font-weight:700;
+  color:var(--muted);text-decoration:underline;cursor:pointer;
+}
 .upsell-no{
   margin-top:12px;font-size:12px;color:var(--muted);
   cursor:pointer;text-decoration:underline;display:block;
+  opacity:.7;
 }
 
 /* ─── FOOTER ──────────────────────────────────────────── */
@@ -837,11 +845,11 @@ footer strong{color:var(--text)}
           <li>Guia: Erros e Soluções</li>
           <li>Guia: IA Recomendada</li>
           <li>Mini Aula: Como Usar os Prompts</li>
-          <li style="color:var(--muted);opacity:.5">✗ Prompts premium exclusivos</li>
-          <li style="color:var(--muted);opacity:.5">✗ Pack de legendas prontas</li>
-          <li style="color:var(--muted);opacity:.5">✗ Atualizações futuras</li>
+          <li class="neg">Prompts premium exclusivos</li>
+          <li class="neg">Pack de legendas prontas</li>
+          <li class="neg">Atualizações futuras</li>
         </ul>
-        <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta" style="background:var(--muted);box-shadow:none" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_basico')">
+        <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" style="background:var(--muted);box-shadow:none" onclick="gtag&&gtag('event','click_basico')">
           QUERO O BÁSICO · R$ 9,90
         </a>
       </div>
@@ -968,7 +976,7 @@ footer strong{color:var(--text)}
     <div class="cta-counter" id="cta-counter">
       ⚡ Oferta expira em <span id="t-min2">15</span>:<span id="t-sec2">00</span> depois volta pra R$ 47,00.
     </div>
-    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta" style="max-width:480px;margin:0 auto 14px" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_final_cta')">
+    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" style="max-width:480px;margin:0 auto 14px" onclick="gtag&&gtag('event','click_final_cta')">
       QUERO OS PROMPTS AGORA · R$ 9,90
     </a>
     <div style="text-align:center;font-size:13px;color:var(--muted)">
@@ -979,7 +987,7 @@ footer strong{color:var(--text)}
 
 <!-- ══ STICKY BAR (MOBILE) ════════════════════════════ -->
 <div id="sticky-bar">
-  <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_sticky_cta')">
+  <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="btn-cta btn-basico" onclick="gtag&&gtag('event','click_sticky_cta')">
     QUERO OS PROMPTS R$ 9,90
   </a>
   <div class="sticky-sub">
@@ -1000,19 +1008,21 @@ footer strong{color:var(--text)}
     <div class="upsell-price"><sup>R$</sup>17<span style="font-size:22px">,90</span></div>
     <ul class="upsell-items">
       <li><strong>+400 prompts organizados por categoria</strong></li>
+      <li>Carro, moto, praia, Dubai e muito mais</li>
+      <li>Funciona no ChatGPT e Gemini gratuitos</li>
       <li><strong>+ 7 bônus exclusivos (R$239 de valor)</strong></li>
-      <li><strong>Pack Rosto Real</strong> · 50 prompts que preservam seu rosto</li>
-      <li><strong>Pack Viral</strong> · estilos que param o scroll</li>
-      <li><strong>Pack Stories e Reels</strong> · formato vertical 9:16</li>
-      <li><strong>Guia da Selfie Perfeita</strong> · 4 regras essenciais</li>
-      <li><strong>Pack Identidade Visual</strong> · 5 blocos de estética</li>
-      <li><strong>Pack Academia e Corpo</strong> · 25 prompts fitness</li>
-      <li><strong>Guia da Legenda Certeira</strong> · 10 estruturas virais</li>
-      <li>Guias PDF: Erros, IA Recomendada, Mini Aula</li>
-      <li>Acesso vitalício · Atualizações incluídas</li>
+      <li>Guia: Erros e Soluções</li>
+      <li>Guia: IA Recomendada</li>
+      <li>Mini Aula: Como Usar os Prompts</li>
+      <li><strong>+50 prompts premium exclusivos</strong></li>
+      <li><strong>Pack de legendas prontas para postar</strong></li>
+      <li><strong>Atualizações futuras inclusas</strong></li>
     </ul>
-    <a href="https://pay.wiapy.com/uVTw8NzBoS4" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_upsell');closeUpsell()">
+    <a href="https://pay.wiapy.com/uVTw8NzBoS4" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_upsell')">
       SIM, QUERO O COMPLETO POR R$ 17,90
+    </a>
+    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="upsell-basico-link" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_upsell_basico')">
+      Não, quero só o básico por R$ 9,90
     </a>
     <span class="upsell-no" onclick="closeUpsell()">Não, prefiro ficar com o perfil feio</span>
   </div>
@@ -1121,11 +1131,9 @@ function toggleFaq(btn){
 
 // ── UPSELL POPUP ─────────────────────────────────────
 (function(){
-  let shown = false;
+  let shownByExitIntent = false;
 
   function showUpsell(){
-    if(shown) return;
-    shown = true;
     document.getElementById('upsell-overlay').classList.add('active');
     fbq && fbq('track','ViewContent',{content_name:'upsell_popup'});
   }
@@ -1134,17 +1142,21 @@ function toggleFaq(btn){
     document.getElementById('upsell-overlay').classList.remove('active');
   };
 
-  // Gatilho 1: exit intent (mouse saindo pelo topo)
+  // Gatilho 1: exit intent (mouse saindo pelo topo) — só uma vez por sessão
   document.addEventListener('mouseleave', function(e){
-    if(e.clientY < 10) showUpsell();
+    if(e.clientY < 10 && !shownByExitIntent){
+      shownByExitIntent = true;
+      showUpsell();
+    }
   });
 
-  // Gatilho 2: clique no botão do plano básico
-  document.querySelector('a[href="https://pay.wiapy.com/OeJsJBnyg3Qc"]')
-    ?.addEventListener('click', function(e){
+  // Gatilho 2: clique em qualquer botão do plano básico (card, CTA final, sticky bar)
+  document.querySelectorAll('.btn-basico').forEach(function(btn){
+    btn.addEventListener('click', function(e){
       e.preventDefault();
       showUpsell();
     });
+  });
 
   // Fechar ao clicar fora do box
   document.getElementById('upsell-overlay').addEventListener('click', function(e){
