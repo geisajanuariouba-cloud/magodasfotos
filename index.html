@@ -435,6 +435,45 @@ button{cursor:pointer;border:none;font-family:inherit}
 /* ─── STICKY MOBILE BAR ──────────────────────────────── */
 #sticky-bar{display:none!important}
 
+/* ─── POPUP OFERTA ──────────────────────────────────────── */
+#upsell-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);
+  z-index:9999;align-items:center;justify-content:center;padding:16px;
+}
+#upsell-overlay.active{display:flex}
+#upsell-box{
+  background:var(--card);border:2px solid var(--gold);border-radius:16px;
+  max-width:420px;width:100%;padding:28px 22px;position:relative;text-align:center;
+  animation:popIn .25s ease;
+}
+@keyframes popIn{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+#upsell-close{
+  position:absolute;top:12px;right:14px;background:none;border:none;
+  color:var(--muted);font-size:22px;cursor:pointer;line-height:1;
+}
+.upsell-eyebrow{
+  font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--red);margin-bottom:10px;
+}
+.upsell-title{font-size:22px;font-weight:900;line-height:1.2;margin-bottom:6px}
+.upsell-sub{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.5}
+.upsell-price-old{font-size:14px;text-decoration:line-through;color:var(--muted)}
+.upsell-price{font-size:44px;font-weight:900;color:var(--gold);line-height:1;margin:4px 0 16px}
+.upsell-price sup{font-size:18px;vertical-align:top;margin-top:10px}
+.upsell-items{list-style:none;text-align:left;margin-bottom:20px}
+.upsell-items li{
+  font-size:13px;color:var(--muted);padding:5px 0;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:8px;
+}
+.upsell-items li:last-child{border-bottom:none}
+.upsell-items li::before{content:'✓';color:var(--green);font-size:12px;flex-shrink:0;margin-top:2px}
+.upsell-items li strong{color:var(--text)}
+.upsell-no{
+  margin-top:12px;font-size:12px;color:var(--muted);
+  cursor:pointer;text-decoration:underline;display:block;
+}
+
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer{
   padding:24px 20px 96px;text-align:center;
@@ -943,6 +982,35 @@ footer strong{color:var(--text)}
   </div>
 </div>
 
+<!-- ══ POPUP UPSELL ════════════════════════════════════ -->
+<div id="upsell-overlay">
+  <div id="upsell-box">
+    <button id="upsell-close" onclick="closeUpsell()">✕</button>
+    <div class="upsell-eyebrow">⚡ Oferta exclusiva · só agora</div>
+    <div class="upsell-title">Leva o Completo por muito menos</div>
+    <div class="upsell-sub">Você tá saindo deixando os 7 bônus pra trás. Pega tudo por R$ 17,90 só hoje.</div>
+    <div class="upsell-price-old">de R$ 97,00</div>
+    <div class="upsell-price"><sup>R$</sup>17<span style="font-size:22px">,90</span></div>
+    <ul class="upsell-items">
+      <li><strong>+400 prompts organizados por categoria</strong></li>
+      <li><strong>+ 7 bônus exclusivos (R$239 de valor)</strong></li>
+      <li><strong>Pack Rosto Real</strong> · 50 prompts que preservam seu rosto</li>
+      <li><strong>Pack Viral</strong> · estilos que param o scroll</li>
+      <li><strong>Pack Stories e Reels</strong> · formato vertical 9:16</li>
+      <li><strong>Guia da Selfie Perfeita</strong> · 4 regras essenciais</li>
+      <li><strong>Pack Identidade Visual</strong> · 5 blocos de estética</li>
+      <li><strong>Pack Academia e Corpo</strong> · 25 prompts fitness</li>
+      <li><strong>Guia da Legenda Certeira</strong> · 10 estruturas virais</li>
+      <li>Guias PDF: Erros, IA Recomendada, Mini Aula</li>
+      <li>Acesso vitalício · Atualizações incluídas</li>
+    </ul>
+    <a href="https://pay.wiapy.com/uVTw8NzBoS4" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');gtag&&gtag('event','click_upsell');closeUpsell()">
+      SIM, QUERO O COMPLETO POR R$ 17,90
+    </a>
+    <span class="upsell-no" onclick="closeUpsell()">Não, prefiro ficar sem os bônus</span>
+  </div>
+</div>
+
 <!-- ══ FOOTER ══════════════════════════════════════════ -->
 <footer>
   <strong>Mago das Fotos</strong> · Todos os direitos reservados · 2026<br>
@@ -1042,6 +1110,39 @@ function toggleFaq(btn){
 
   window.addEventListener('scroll', update, {passive:true});
   update();
+})();
+
+// ── UPSELL POPUP ─────────────────────────────────────
+(function(){
+  let shown = false;
+
+  function showUpsell(){
+    if(shown) return;
+    shown = true;
+    document.getElementById('upsell-overlay').classList.add('active');
+    fbq && fbq('track','ViewContent',{content_name:'upsell_popup'});
+  }
+
+  window.closeUpsell = function(){
+    document.getElementById('upsell-overlay').classList.remove('active');
+  };
+
+  // Gatilho 1: exit intent (mouse saindo pelo topo)
+  document.addEventListener('mouseleave', function(e){
+    if(e.clientY < 10) showUpsell();
+  });
+
+  // Gatilho 2: clique no botão do plano básico
+  document.querySelector('a[href="https://pay.wiapy.com/OeJsJBnyg3Qc"]')
+    ?.addEventListener('click', function(e){
+      e.preventDefault();
+      showUpsell();
+    });
+
+  // Fechar ao clicar fora do box
+  document.getElementById('upsell-overlay').addEventListener('click', function(e){
+    if(e.target === this) closeUpsell();
+  });
 })();
 
 // ── VSL PLAYER ───────────────────────────────────────
