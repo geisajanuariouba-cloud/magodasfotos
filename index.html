@@ -179,7 +179,8 @@ button{cursor:pointer;border:none;font-family:inherit}
 }
 .ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
 .ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
-.ticker picture,.slider-before picture,.slider-after picture,.testis-grid picture{display:contents}
+.ticker picture,.slider-before picture,.slider-after picture{display:contents}
+.testis-grid picture{display:block;width:100%}
 .ticker{
   display:flex;gap:10px;
   animation:ticker 28s linear infinite;
