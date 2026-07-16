@@ -179,6 +179,7 @@ button{cursor:pointer;border:none;font-family:inherit}
 }
 .ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
 .ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.ticker picture,.slider-before picture,.slider-after picture,.testis-grid picture{display:contents}
 .ticker{
   display:flex;gap:10px;
   animation:ticker 28s linear infinite;
@@ -548,29 +549,29 @@ footer strong{color:var(--text)}
   <div class="gallery-label">Feito com os prompts: olha o resultado</div>
   <div class="ticker-wrap">
     <div class="ticker" id="ticker">
-      <img class="ticker-img" src="./img/ticker-01.jpg" width="130" height="170" alt="resultado 1" loading="eager" decoding="async">
-      <img class="ticker-img" src="./img/ticker-02.jpg" width="130" height="170" alt="resultado 2" loading="eager" decoding="async">
-      <img class="ticker-img" src="./img/ticker-03.jpg" width="130" height="170" alt="resultado 3" loading="eager" decoding="async">
-      <img class="ticker-img" src="./img/ticker-04.jpg" width="130" height="170" alt="resultado 4" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-05.jpg" width="130" height="170" alt="resultado 5" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-06.jpg" width="130" height="170" alt="resultado 6" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-07.jpg" width="130" height="170" alt="resultado 7" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-08.jpg" width="130" height="170" alt="resultado 8" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-09.jpg" width="130" height="170" alt="resultado 9" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-10.jpg" width="130" height="170" alt="resultado 10" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-11.jpg" width="130" height="170" alt="resultado 11" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-12.jpg" width="130" height="170" alt="resultado 12" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-13.jpg" width="130" height="170" alt="resultado 13" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-14.jpg" width="130" height="170" alt="resultado 14" loading="lazy" decoding="async">
+      <picture><source srcset="./img/ticker-01.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-01.jpg" width="130" height="170" alt="resultado 1" loading="eager" fetchpriority="high" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-02.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-02.jpg" width="130" height="170" alt="resultado 2" loading="eager" fetchpriority="high" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-03.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-03.jpg" width="130" height="170" alt="resultado 3" loading="eager" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-04.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-04.jpg" width="130" height="170" alt="resultado 4" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-05.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-05.jpg" width="130" height="170" alt="resultado 5" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-06.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-06.jpg" width="130" height="170" alt="resultado 6" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-07.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-07.jpg" width="130" height="170" alt="resultado 7" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-08.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-08.jpg" width="130" height="170" alt="resultado 8" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-09.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-09.jpg" width="130" height="170" alt="resultado 9" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-10.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-10.jpg" width="130" height="170" alt="resultado 10" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-11.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-11.jpg" width="130" height="170" alt="resultado 11" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-12.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-12.jpg" width="130" height="170" alt="resultado 12" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-13.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-13.jpg" width="130" height="170" alt="resultado 13" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-14.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-14.jpg" width="130" height="170" alt="resultado 14" loading="lazy" decoding="async"></picture>
       <!-- duplicados para loop infinito -->
-      <img class="ticker-img" src="./img/ticker-01.jpg" width="130" height="170" alt="resultado 1" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-02.jpg" width="130" height="170" alt="resultado 2" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-03.jpg" width="130" height="170" alt="resultado 3" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-04.jpg" width="130" height="170" alt="resultado 4" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-05.jpg" width="130" height="170" alt="resultado 5" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-06.jpg" width="130" height="170" alt="resultado 6" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-07.jpg" width="130" height="170" alt="resultado 7" loading="lazy" decoding="async">
-      <img class="ticker-img" src="./img/ticker-08.jpg" width="130" height="170" alt="resultado 8" loading="lazy" decoding="async">
+      <picture><source srcset="./img/ticker-01.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-01.jpg" width="130" height="170" alt="resultado 1" loading="eager" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-02.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-02.jpg" width="130" height="170" alt="resultado 2" loading="eager" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-03.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-03.jpg" width="130" height="170" alt="resultado 3" loading="eager" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-04.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-04.jpg" width="130" height="170" alt="resultado 4" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-05.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-05.jpg" width="130" height="170" alt="resultado 5" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-06.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-06.jpg" width="130" height="170" alt="resultado 6" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-07.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-07.jpg" width="130" height="170" alt="resultado 7" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/ticker-08.webp" type="image/webp"><img class="ticker-img" src="./img/ticker-08.jpg" width="130" height="170" alt="resultado 8" loading="lazy" decoding="async"></picture>
     </div>
   </div>
   <div class="social-count">
@@ -587,10 +588,10 @@ footer strong{color:var(--text)}
 
     <div class="slider-container" id="slider" style="aspect-ratio:3/4">
       <div class="slider-before">
-        <img src="./img/antes.jpg" width="700" height="933" alt="Antes do prompt" loading="eager" decoding="async">
+        <picture><source srcset="./img/antes.webp" type="image/webp"><img src="./img/antes.jpg" width="700" height="933" alt="Antes do prompt" loading="eager" decoding="async"></picture>
       </div>
       <div class="slider-after" id="sliderAfter">
-        <img src="./img/depois.jpg" width="700" height="957" alt="Depois do prompt" loading="eager" decoding="async">
+        <picture><source srcset="./img/depois.webp" type="image/webp"><img src="./img/depois.jpg" width="700" height="957" alt="Depois do prompt" loading="eager" decoding="async"></picture>
       </div>
       <div class="slider-label slider-label-before">ANTES</div>
       <div class="slider-label slider-label-after">DEPOIS</div>
@@ -724,10 +725,10 @@ footer strong{color:var(--text)}
     <h2 class="section-title">Quem usou não volta mais pro perfil feio</h2>
 
     <div class="testis-grid">
-      <img class="testi-img" src="./img/testi-01.jpg" width="480" height="853" alt="Depoimento 1" loading="lazy" decoding="async">
-      <img class="testi-img" src="./img/testi-02.jpg" width="480" height="853" alt="Depoimento 2" loading="lazy" decoding="async">
-      <img class="testi-img" src="./img/testi-03.jpg" width="480" height="853" alt="Depoimento 3" loading="lazy" decoding="async">
-      <img class="testi-img" src="./img/testi-04.jpg" width="480" height="853" alt="Depoimento 4" loading="lazy" decoding="async">
+      <picture><source srcset="./img/testi-01.webp" type="image/webp"><img class="testi-img" src="./img/testi-01.jpg" width="480" height="853" alt="Depoimento 1" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/testi-02.webp" type="image/webp"><img class="testi-img" src="./img/testi-02.jpg" width="480" height="853" alt="Depoimento 2" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/testi-03.webp" type="image/webp"><img class="testi-img" src="./img/testi-03.jpg" width="480" height="853" alt="Depoimento 3" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="./img/testi-04.webp" type="image/webp"><img class="testi-img" src="./img/testi-04.jpg" width="480" height="853" alt="Depoimento 4" loading="lazy" decoding="async"></picture>
     </div>
 
     <div style="margin-top:18px;text-align:center;font-size:13.5px;color:var(--muted)">
@@ -1050,6 +1051,8 @@ footer strong{color:var(--text)}
 
   let dragging = false;
   let pos = 50;
+  let cachedRect = null;
+  let rafPending = false;
 
   function setPos(p){
     pos = Math.min(Math.max(p, 5), 95);
@@ -1058,18 +1061,33 @@ footer strong{color:var(--text)}
   }
   setPos(50);
 
-  function getPercent(e){
-    const touch = e.touches ? e.touches[0] : e;
-    const rect = slider.getBoundingClientRect();
-    return ((touch.clientX - rect.left) / rect.width) * 100;
+  function getPercent(clientX){
+    return ((clientX - cachedRect.left) / cachedRect.width) * 100;
   }
 
-  handle.addEventListener('mousedown', () => dragging = true);
-  handle.addEventListener('touchstart', (e) => { dragging = true; e.preventDefault(); }, {passive:false});
-  slider.addEventListener('click', (e) => setPos(getPercent(e)));
+  function startDrag(){
+    dragging = true;
+    cachedRect = slider.getBoundingClientRect();
+  }
 
-  window.addEventListener('mousemove', (e) => { if(dragging) setPos(getPercent(e)); });
-  window.addEventListener('touchmove', (e) => { if(dragging){ setPos(getPercent(e)); e.preventDefault(); }}, {passive:false});
+  function queueMove(clientX){
+    if(rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      setPos(getPercent(clientX));
+      rafPending = false;
+    });
+  }
+
+  handle.addEventListener('mousedown', startDrag);
+  handle.addEventListener('touchstart', (e) => { startDrag(); e.preventDefault(); }, {passive:false});
+  slider.addEventListener('click', (e) => {
+    cachedRect = slider.getBoundingClientRect();
+    setPos(getPercent(e.clientX));
+  });
+
+  window.addEventListener('mousemove', (e) => { if(dragging) queueMove(e.clientX); });
+  window.addEventListener('touchmove', (e) => { if(dragging){ queueMove(e.touches[0].clientX); e.preventDefault(); }}, {passive:false});
   window.addEventListener('mouseup', () => dragging = false);
   window.addEventListener('touchend', () => dragging = false);
 })();
@@ -1120,14 +1138,20 @@ function toggleFaq(btn){
   const ctaFinal = document.getElementById('cta-final');
   if(!bar) return;
 
+  let rafPending = false;
   function update(){
+    rafPending = false;
     const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
     const ctaTop = ctaFinal ? ctaFinal.getBoundingClientRect().top : Infinity;
     const show = heroBottom < 0 && ctaTop > window.innerHeight * 0.5;
     bar.classList.toggle('visible', show);
   }
 
-  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('scroll', () => {
+    if(rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(update);
+  }, {passive:true});
   update();
 })();
 
