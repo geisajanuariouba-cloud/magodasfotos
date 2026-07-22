@@ -6,34 +6,6 @@
 <meta name="description" content="Seu perfil tá feio? A gente resolve. 400 prompts prontos pra deixar sua foto muito mais daora em segundos. É só copiar e colar.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%84%3C/text%3E%3C/svg%3E">
 <title>Mago das Fotos · Seu perfil tá feio? A gente resolve.</title>
-<!-- Utmify Pixel -->
-<script>
-  window.pixelId = "6a5252f9751a4c1fdd288e4c";
-  var a = document.createElement("script");
-  a.setAttribute("async", "");
-  a.setAttribute("defer", "");
-  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-  document.head.appendChild(a);
-</script>
-<!-- End Utmify Pixel -->
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1975487463203640');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1975487463203640&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <style>
 /* ─── TOKENS ─────────────────────────────────────────── */
 :root{
@@ -878,7 +850,7 @@ footer strong{color:var(--text)}
           <li><strong>Pack de legendas prontas para postar</strong></li>
           <li><strong>Atualizações futuras inclusas</strong></li>
         </ul>
-        <a href="https://pay.wiapy.com/-qpWMMYVyL3O" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');typeof gtag==='function'&&gtag('event','click_completo')">
+        <a href="https://pay.wiapy.com/-qpWMMYVyL3O" class="btn-cta" onclick="typeof gtag==='function'&&gtag('event','click_completo')">
           QUERO O COMPLETO · R$ 27,90<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">QUERO OS PROMPTS AGORA</span>
         </a>
       </div>
@@ -1023,10 +995,10 @@ footer strong{color:var(--text)}
       <li><strong>Pack de legendas prontas para postar</strong></li>
       <li><strong>Atualizações futuras inclusas</strong></li>
     </ul>
-    <a href="https://pay.wiapy.com/uVTw8NzBoS4" class="btn-cta" onclick="fbq&&fbq('track','InitiateCheckout');typeof gtag==='function'&&gtag('event','click_upsell')">
+    <a href="https://pay.wiapy.com/uVTw8NzBoS4" class="btn-cta" onclick="typeof gtag==='function'&&gtag('event','click_upsell')">
       SIM, QUERO O COMPLETO POR R$ 17,90<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">QUERO OS PROMPTS AGORA</span>
     </a>
-    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="upsell-basico-link" onclick="fbq&&fbq('track','InitiateCheckout');typeof gtag==='function'&&gtag('event','click_upsell_basico')">
+    <a href="https://pay.wiapy.com/OeJsJBnyg3Qc" class="upsell-basico-link" onclick="typeof gtag==='function'&&gtag('event','click_upsell_basico')">
       Não, quero só o básico por R$ 9,90<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">QUERO OS PROMPTS AGORA</span>
     </a>
     <span class="upsell-no" id="upsell-no-thanks" onclick="closeUpsell()">Não, prefiro ficar com o perfil feio</span>
@@ -1165,7 +1137,6 @@ function toggleFaq(btn){
     document.getElementById('upsell-overlay').classList.add('active');
     const noThanks = document.getElementById('upsell-no-thanks');
     if(noThanks) noThanks.style.display = viaExitIntent ? 'block' : 'none';
-    fbq && fbq('track','ViewContent',{content_name:'upsell_popup'});
   }
 
   window.closeUpsell = function(){
