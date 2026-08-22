@@ -452,11 +452,6 @@ button{cursor:pointer;border:none;font-family:inherit}
   color:var(--muted);text-decoration:underline;cursor:pointer;
   padding:10px 4px;touch-action:manipulation;
 }
-.upsell-no{
-  margin-top:4px;font-size:12px;color:var(--muted);
-  cursor:pointer;text-decoration:underline;display:none;
-  opacity:.7;padding:10px 4px;touch-action:manipulation;
-}
 
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer{
@@ -1001,7 +996,6 @@ footer strong{color:var(--text)}
     <a href="https://checkout.wiven.com.br/checkout/cmso362zw0a6f01pwocmvi7tb?offer=JGZI80R" class="upsell-basico-link" onclick="typeof gtag==='function'&&gtag('event','click_upsell_basico')">
       Não, quero só o básico por R$ 9,90<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">QUERO OS PROMPTS AGORA</span>
     </a>
-    <span class="upsell-no" id="upsell-no-thanks" onclick="closeUpsell()">Não, prefiro ficar com o perfil feio</span>
   </div>
 </div>
 
@@ -1131,31 +1125,19 @@ function toggleFaq(btn){
 
 // ── UPSELL POPUP ─────────────────────────────────────
 (function(){
-  let shownByExitIntent = false;
-
-  function showUpsell(viaExitIntent){
+  function showUpsell(){
     document.getElementById('upsell-overlay').classList.add('active');
-    const noThanks = document.getElementById('upsell-no-thanks');
-    if(noThanks) noThanks.style.display = viaExitIntent ? 'block' : 'none';
   }
 
   window.closeUpsell = function(){
     document.getElementById('upsell-overlay').classList.remove('active');
   };
 
-  // Gatilho 1: exit intent (mouse saindo pelo topo) — só uma vez por sessão
-  document.addEventListener('mouseleave', function(e){
-    if(e.clientY < 10 && !shownByExitIntent){
-      shownByExitIntent = true;
-      showUpsell(true);
-    }
-  });
-
-  // Gatilho 2: clique em qualquer botão do plano básico (card, CTA final, sticky bar)
+  // Gatilho único: clique em qualquer botão do plano básico (card, CTA final, sticky bar)
   document.querySelectorAll('.btn-basico').forEach(function(btn){
     btn.addEventListener('click', function(e){
       e.preventDefault();
-      showUpsell(false);
+      showUpsell();
     });
   });
 
